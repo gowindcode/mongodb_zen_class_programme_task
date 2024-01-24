@@ -1,0 +1,79 @@
+db.mentors.aggregate([
+...     {
+...         $unwind: "$batch"
+...     },
+...     {
+...         $match: {
+...             "batch.mentees_count": { $gte: 15}
+...         }
+...     },
+...     {
+...         $group: {
+...             _id: {
+...                 mentor_id: "$id",
+...                 mentor_name: "$name"
+...             },
+...             batches: {$push: "$batch"}
+...         }
+...     },
+...     {
+...         $sort: {
+...             "_id.mentor_id": 1
+...         }
+...     }
+...
+... ]).pretty()
+{
+        "_id" : {
+                "mentor_id" : 1,
+                "mentor_name" : "Sanjay"
+        },
+        "batches" : [
+                {
+                        "batch_code" : "B51 WD1",
+                        "language" : "English",
+                        "timing" : "8am to 10am",
+                        "mentees_count" : 20
+                },
+                {
+                        "batch_code" : "B52 WD4",
+                        "language" : "Tamil",
+                        "timing" : "11pm to 1pm",
+                        "mentees_count" : 24
+                }
+        ]
+}
+{
+        "_id" : {
+                "mentor_id" : 2,
+                "mentor_name" : "Arun"
+        },
+        "batches" : [
+                {
+                        "batch_code" : "B53 WD2",
+                        "language" : "English",
+                        "timing" : "12pm to 3pm",
+                        "mentees_count" : 32
+                }
+        ]
+}
+{
+        "_id" : {
+                "mentor_id" : 3,
+                "mentor_name" : "Arthi"
+        },
+        "batches" : [
+                {
+                        "batch_code" : "B52 WD3",
+                        "language" : "Tamil",
+                        "timing" : "8am to 10am",
+                        "mentees_count" : 28
+                },
+                {
+                        "batch_code" : "B52 WD3",
+                        "language" : "Tamil",
+                        "timing" : "6pm to 9pm",
+                        "mentees_count" : 19
+                }
+        ]
+}

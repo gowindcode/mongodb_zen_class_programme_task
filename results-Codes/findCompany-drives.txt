@@ -1,0 +1,98 @@
+> db.company_drives.aggregate([
+...
+...     {
+...         $match: {month: "october"}
+...     },
+...     {
+...         $unwind: "$details"
+...     },
+...
+...     {
+...         $match: {
+...         $or: [
+...         {
+...         "details.day": {$gte: 15, $lte: 31.10}
+...         },
+...         {
+...         "details.ineterview_date": {$gte: "15/10/2020", $lte: "31/10/2020"}
+...         }
+...     ]
+...     }
+... },
+... {
+...     $project: {
+...         _id:0,
+...         month: "$month",
+...         company: "$details.company",
+...         position: "$details.position",
+...         day: "$details.day",
+...         interview_date: "$details.interview_date",
+...         total_Hired: "$details.total_Hired",
+...         total_Interviewed: "$details.total_Interviewed"
+...     }
+... }
+... ]).pretty()
+{
+        "month" : "october",
+        "company" : "HCL",
+        "position" : "Back End Developer",
+        "day" : 15.1,
+        "interview_date" : "15/10/2020",
+        "total_Hired" : 20,
+        "total_Interviewed" : 36
+}
+{
+        "month" : "october",
+        "company" : "TCL",
+        "position" : "Back End Developer",
+        "day" : 19.1,
+        "interview_date" : "19/10/2020",
+        "total_Hired" : 22,
+        "total_Interviewed" : 45
+}
+{
+        "month" : "october",
+        "company" : "GUVI",
+        "position" : "Software Engineer",
+        "day" : 22.1,
+        "interview_date" : "22/10/2020",
+        "total_Hired" : 2,
+        "total_Interviewed" : 8
+}
+{
+        "month" : "october",
+        "company" : "Wipro",
+        "position" : "Software Engineer",
+        "day" : 26.1,
+        "interview_date" : "26/10/2020",
+        "total_Hired" : 4,
+        "total_Interviewed" : 16
+}
+{
+        "month" : "october",
+        "company" : "HCL",
+        "position" : "Data Scientists",
+        "day" : 29.1,
+        "interview_date" : "29/10/2020",
+        "total_Hired" : 3,
+        "total_Interviewed" : 9
+}
+{
+        "month" : "october",
+        "company" : "RBL",
+        "position" : "Software Developer",
+        "day" : 30.1,
+        "interview_date" : "30/10/2020",
+        "total_Hired" : 6,
+        "total_Interviewed" : 22
+}
+{
+        "month" : "october",
+        "company" : "Infotech",
+        "position" : " UI & UX Designeer",
+        "day" : 31.1,
+        "interview_date" : "31/10/2020",
+        "total_Hired" : 8,
+        "total_Interviewed" : 40
+}
+>

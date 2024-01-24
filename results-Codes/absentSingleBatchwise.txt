@@ -1,0 +1,127 @@
+db.attendance.aggregate([
+...      {
+...          $unwind: "$batch_B51_WD1"
+...      },
+...      {
+...          $match: {
+...              "batch_B51_WD1.absent_Date": { $gte: "15/10/2020", $lte: "31/10/2020"}
+...          }
+...      },
+...      {
+...          $group: {
+...              _id: {
+...                 student_id: "$student_id",
+...                  student_name: "$student_name"
+...              },
+...              absent_details: {
+...                 $push: "$batch_B51_WD1"
+...                 }
+...          }
+...      },
+...      {
+...          $sort: {
+...              "_id.mentor_id": 1
+...          }
+...      }
+...
+...  ]).pretty()
+{
+        "_id" : {
+
+        },
+        "absent_details" : [
+                {
+                        "student_id" : 2,
+                        "student_Name" : "Aaparna",
+                        "present_counts" : 23,
+                        "absent_Date" : "15/10/2020",
+                        "absent_counts" : 1
+                },
+                {
+                        "student_id" : 4,
+                        "student_Name" : "Chandru",
+                        "present_counts" : 23,
+                        "absent_Date" : "16/10/2020",
+                        "absent_counts" : 1
+                },
+                {
+                        "student_id" : 5,
+                        "student_Name" : "David",
+                        "present_counts" : 23,
+                        "absent_Date" : "17/10/2020",
+                        "absent_counts" : 1
+                }
+        ]
+}
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+
+db.attendance.aggregate([
+     {
+         $unwind: "$batch_B52_WD2"
+     },
+     {
+         $match: {
+             "batch_B52_WD2.absent_Date": { $gte: "15/10/2020", $lte: "31/10/2020"}
+         }
+     },
+     {
+         $group: {
+             _id: {
+                student_id: "$student_id",
+                 student_name: "$student_name"
+             },
+             absent_details: {
+                $push: "$batch_B52_WD2"
+                }
+         }
+     },
+     {
+         $sort: {
+             "_id.mentor_id": 1
+         }
+     }
+
+ ]).pretty()
+ {
+        "_id" : {
+
+        },
+        "absent_details" : [
+                {
+                        "student_id" : 2,
+                        "student_Name" : "Ajay",
+                        "present_counts" : 23,
+                        "absent_Date" : "18/10/2020",
+                        "absent_counts" : 1
+                },
+                {
+                        "student_id" : 3,
+                        "student_Name" : "Albert",
+                        "present_counts" : 23,
+                        "absent_Date" : "20/10/2020",
+                        "absent_counts" : 1
+                },
+                {
+                        "student_id" : 5,
+                        "student_Name" : "Ajay",
+                        "present_counts" : 23,
+                        "absent_Date" : "21/10/2020",
+                        "absent_counts" : 1
+                },
+                {
+                        "student_id" : 6,
+                        "student_Name" : "Basha",
+                        "present_counts" : 22,
+                        "absent_Date" : "21/10/2020 to 22/10/2020",
+                        "absent_counts" : 2
+                }
+        ]
+}
+
+
+--------------------------------------------------------------------------------------------------------
+

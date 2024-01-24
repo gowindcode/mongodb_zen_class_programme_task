@@ -1,0 +1,303 @@
+db.attendance.aggregate([
+  {
+    $project: {
+      batches: {
+        $objectToArray: "$$ROOT"
+      }
+    }
+  },
+  {
+    $unwind: "$batches"
+  },
+  {
+    $unwind: "$batches.v"
+  },
+  {
+    $match: {
+      "batches.v.absent_Date": { $gte: "15/10/2020", $lte: "31/10/2020" }
+    }
+  },
+  {
+    $group: {
+      _id: {
+        batch: "$batches.k",
+        student_id: "$batches.v.student_id",
+        student_name: "$batches.v.student_Name"
+      },
+      absent_details: {
+        $push: {
+          absent_counts: "$batches.v.absent_counts",
+          absent_Date: "$batches.v.absent_Date"
+        }
+      }
+    }
+  },
+  {
+    $sort: {
+      "_id.batch": 1,
+      "_id.student_id": 1
+    }
+  }
+]).pretty()
+
+
+{
+        "_id" : {
+                "batch" : "batch_B51_WD1",
+                "student_id" : 2,
+                "student_name" : "Aaparna"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "15/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B51_WD1",
+                "student_id" : 4,
+                "student_name" : "Chandru"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "16/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B51_WD1",
+                "student_id" : 5,
+                "student_name" : "David"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "17/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD2",
+                "student_id" : 2,
+                "student_name" : "Ajay"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "18/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD2",
+                "student_id" : 3,
+                "student_name" : "Albert"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "20/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD2",
+                "student_id" : 5,
+                "student_name" : "Ajay"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "21/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD2",
+                "student_id" : 6,
+                "student_name" : "Basha"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 2,
+                        "absent_Date" : "21/10/2020 to 22/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD3",
+                "student_id" : 1,
+                "student_name" : "Arjun"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "24/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD3",
+                "student_id" : 3,
+                "student_name" : "China"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "15/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD3",
+                "student_id" : 5,
+                "student_name" : "Jackal"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "19/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD3",
+                "student_id" : 6,
+                "student_name" : "Kumar"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "22/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD4",
+                "student_id" : 3,
+                "student_name" : "Cinderla"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "15/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD4",
+                "student_id" : 5,
+                "student_name" : "Hemalahta"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "28/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B52_WD4",
+                "student_id" : 6,
+                "student_name" : "Imann"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "30/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B53_WD2",
+                "student_id" : 3,
+                "student_name" : "Charless"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 2,
+                        "absent_Date" : "16/10/2020 to 17/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B53_WD2",
+                "student_id" : 4,
+                "student_name" : "Dawood"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "16/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B53_WD2",
+                "student_id" : 5,
+                "student_name" : "Ealizl"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "18/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B53_WD2",
+                "student_id" : 6,
+                "student_name" : "Gopal"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "19/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B53_WD3",
+                "student_id" : 5,
+                "student_name" : "Senthil"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "31/10/2020"
+                }
+        ]
+}
+{
+        "_id" : {
+                "batch" : "batch_B53_WD3",
+                "student_id" : 6,
+                "student_name" : "Vetri"
+        },
+        "absent_details" : [
+                {
+                        "absent_counts" : 1,
+                        "absent_Date" : "29/10/2020"
+                }
+        ]
+}

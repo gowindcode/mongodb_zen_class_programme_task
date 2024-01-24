@@ -1,0 +1,88 @@
+db.students.aggregate([
+...     {
+...       $project: {
+...         _id: 0,
+...         appeared: {
+...           $map: {
+...             input: "$appeared",
+...             as: "app",
+...             in: {
+...               type: "appeared",
+...               id: "$$app.id",
+...               student_name: "$$app.student_name",
+...               status: "$$app.status"
+...             }
+...           }
+...         }
+...       }
+...     },
+...     {
+...       $unwind: {
+...         path: "$appeared",
+...         preserveNullAndEmptyArrays: true
+...       }
+...     },
+...     {
+...       $match: {
+...         "appeared.type": "appeared"
+...       }
+...     },
+...     {
+...       $project: {
+...         type: "$appeared.type",
+...         id: "$appeared.id",
+...         student_name: "$appeared.student_name",
+...         status: "$appeared.status"
+...       }
+...     }
+...   ]).pretty()
+{
+        "type" : "appeared",
+        "id" : 1,
+        "student_name" : "Aswin",
+        "status" : "selected"
+}
+{
+        "type" : "appeared",
+        "id" : 2,
+        "student_name" : "Babu",
+        "status" : "selected"
+}
+{
+        "type" : "appeared",
+        "id" : 3,
+        "student_name" : "Basa",
+        "status" : "selected"
+}
+{
+        "type" : "appeared",
+        "id" : 4,
+        "student_name" : "Chandru",
+        "status" : "selected"
+}
+{
+        "type" : "appeared",
+        "id" : 5,
+        "student_name" : "Dinesh",
+        "status" : "selected"
+}
+{
+        "type" : "appeared",
+        "id" : 6,
+        "student_name" : "Eswar",
+        "status" : "selected"
+}
+{
+        "type" : "appeared",
+        "id" : 7,
+        "student_name" : "Fasil",
+        "status" : "selected"
+}
+{
+        "type" : "appeared",
+        "id" : 8,
+        "student_name" : "Gopal",
+        "status" : "Re-Interview"
+}
+
+  

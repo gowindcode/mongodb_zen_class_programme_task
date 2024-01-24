@@ -1,0 +1,79 @@
+ db.tasks.aggregate([
+...   {
+...     $match: {
+...       month: "october"
+...     }
+...   },
+...   {
+...     $unwind: "$task"
+...   },
+...   {
+...     $match: {
+...       "task.date": { $gte: "01/10/2020", $lte: "14/10/2020" },
+...       "task.submitted": { $exists: false }
+...     }
+...   },
+...   {
+...     $group: {
+...       _id: {
+...         _id: "$_id",
+...         month: "$month"
+...       },
+...       tasks: {
+...         $push: {
+...           id: "$task.id",
+...           task_day: "$task.task_day",
+...           date: "$task.date",
+...           title: "$task.title",
+...           details: "$task.details"
+...         }
+...       }
+...     }
+...   },
+...   {
+...     $sort: {
+...       "_id.month": 1
+...     }
+...   },
+...   {
+...     $project: {
+...       _id: "$_id._id",
+...       month: "$_id.month",
+...       task: "$tasks"
+...     }
+...   }
+... ]).pretty()
+{
+        "_id" : ObjectId("65ae0856f1c1d14e8649164e"),
+        "month" : "october",
+        "task" : [
+                {
+                        "id" : 1,
+                        "task_day" : 5.1,
+                        "date" : "05/10/2020",
+                        "title" : "HTML tags task",
+                        "details" : "h1,h2,h3,h4,h5,h6 & p, span, and related tags for basic web page."
+                },
+                {
+                        "id" : 2,
+                        "task_day" : 7.1,
+                        "date" : "07/10/2020",
+                        "title" : "HTML input field task",
+                        "details" : "create a basic web page which includes student details input fields like (name, DOB, contact, course)."
+                },
+                {
+                        "id" : 3,
+                        "task_day" : 9.1,
+                        "date" : "09/10/2020",
+                        "title" : "Create a basic google form",
+                        "details" : "The form must in basic web page and have select options, dropdown options and check box options and circle options."
+                },
+                {
+                        "id" : 4,
+                        "task_day" : 12.1,
+                        "date" : "12/10/2020",
+                        "title" : "Create a mobile shop web page",
+                        "details" : "This web page should be in reponsive design, you can use bootstrap.."
+                }
+        ]
+}

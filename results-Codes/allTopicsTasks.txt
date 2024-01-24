@@ -1,0 +1,182 @@
+ db.topics.find({month: "october"}).pretty()
+{
+        "_id" : ObjectId("65a912d2d0083ee2551d92ce"),
+        "month" : "october",
+        "day_Topics" : [
+                {
+                        "day" : 1,
+                        "contents" : "What is HTML?"
+                },
+                {
+                        "day" : 2,
+                        "contents" : "HTML tags lists."
+                },
+                {
+                        "day" : 3,
+                        "contents" : "Why HTML?"
+                },
+                {
+                        "day" : 4,
+                        "contents" : "HTML older versions and HTML 5."
+                },
+                {
+                        "day" : 5,
+                        "contents" : "HTML & CSS."
+                },
+                {
+                        "day" : 6,
+                        "contents" : "CSS Pesudo."
+                },
+                {
+                        "day" : 7,
+                        "contents" : "CSS & Bootstrap."
+                },
+                {
+                        "day" : 8,
+                        "contents" : "Create basic web page using HTML, CSS with bootstrap."
+                },
+                {
+                        "day" : 9,
+                        "contents" : "Basic concepts discussion day-1."
+                },
+                {
+                        "day" : 10,
+                        "contents" : "Basic concepts discussion day-2."
+                },
+                {
+                        "day" : 11,
+                        "contents" : "Make your own project using HTML, CSS."
+                },
+                {
+                        "day" : 12,
+                        "contents" : "Java Script basic."
+                },
+                {
+                        "day" : 13,
+                        "contents" : "Java Script, HTML and CSS for complete web page."
+                },
+                {
+                        "day" : 14,
+                        "contents" : "Java Script Array destructure."
+                },
+                {
+                        "day" : 15,
+                        "contents" : "Java Script for loop, for each, for in, for of methods."
+                },
+                {
+                        "day" : 16,
+                        "contents" : "java script map method."
+                },
+                {
+                        "day" : 17,
+                        "contents" : "Java Script fetch (async & await) function."
+                },
+                {
+                        "day" : 18,
+                        "contents" : "Java Script total discussion day-1."
+                },
+                {
+                        "day" : 19,
+                        "contents" : "Java Script total discussion day-2."
+                },
+                {
+                        "day" : 20,
+                        "contents" : "Make your own project using HTML, jaa Script & CSS."
+                },
+                {
+                        "day" : 21,
+                        "contents" : "Make your own web page using HTML, jaa Script & CSS."
+                },
+                {
+                        "day" : 22,
+                        "contents" : "Doubt clarifiations session day-1."
+                },
+                {
+                        "day" : 23,
+                        "contents" : "Doubt clarifiations session day-2."
+                },
+                {
+                        "day" : 24,
+                        "contents" : "General Discussions day-1."
+                },
+                {
+                        "day" : 25,
+                        "contents" : "General Discussions day-2."
+                }
+        ]
+}
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+> db.tasks.find({month: "october"}).pretty()
+{
+        "_id" : ObjectId("65ae0856f1c1d14e8649164e"),
+        "month" : "october",
+        "task" : [
+                {
+                        "id" : 1,
+                        "task_day" : 5.1,
+                        "date" : "05/10/2020",
+                        "title" : "HTML tags task",
+                        "details" : "h1,h2,h3,h4,h5,h6 & p, span, and related tags for basic web page."
+                },
+                {
+                        "id" : 2,
+                        "task_day" : 7.1,
+                        "date" : "07/10/2020",
+                        "title" : "HTML input field task",
+                        "details" : "create a basic web page which includes student details input fields like (name, DOB, contact, course)."
+                },
+                {
+                        "id" : 3,
+                        "task_day" : 9.1,
+                        "date" : "09/10/2020",
+                        "title" : "Create a basic google form",
+                        "details" : "The form must in basic web page and have select options, dropdown options and check box options and circle options."
+                },
+                {
+                        "id" : 4,
+                        "task_day" : 12.1,
+                        "date" : "12/10/2020",
+                        "title" : "Create a mobile shop web page",
+                        "details" : "This web page should be in reponsive design, you can use bootstrap.."
+                },
+                {
+                        "id" : 5,
+                        "task_day" : 15.1,
+                        "date" : "15/10/2020",
+                        "title" : "DOM",
+                        "details" : "Create a basic web page using DOM."
+                },
+                {
+                        "id" : 6,
+                        "task_day" : 19.1,
+                        "date" : "19/10/2020",
+                        "title" : "Fetch API",
+                        "details" : "Create a basic web page about weather data and for data collect from rest countries using fetch."
+                },
+                {
+                        "id" : 7,
+                        "task_day" : 26.1,
+                        "date" : "26/10/2020",
+                        "title" : "HTML, JAVA SCRIPT",
+                        "details" : "A input field details must store in card format in the basic web page."
+                },
+                {
+                        "id" : 8,
+                        "task_day" : 28.1,
+                        "date" : "28/10/2020",
+                        "title" : "Create your own web page",
+                        "details" : "Develop your own web page."
+                },
+                {
+                        "id" : 9,
+                        "task_day" : 31.1,
+                        "date" : "31/10/2020",
+                        "title" : "Create a web page like guvi zen class",
+                        "details" : "You can create this web page using your own ideas, the output should be similar to guvi zen class."
+                }
+        ]
+}
+>
